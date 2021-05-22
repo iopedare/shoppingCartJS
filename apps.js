@@ -155,7 +155,7 @@ class UI {
                 let id = removeItem.dataset.id;
                 cartContent.removeChild(removeItem.parentElement.parentElement);
                 this.removeItem(id);
-            }
+            } 
         })
     }
 
