@@ -42,10 +42,10 @@ class UI {
             result += `
             <article class="product">
                 <div class="img-container">
-                    <img src=${product.image} alt="product" class="product-img">
+                    <img src=${product.image} alt="product" class="product-img"/>
                     <button class="bag-btn" data-id=${product.id}>
                         <i class="fas fa-shopping-cart"></i>
-                        Add to bag
+                        add to bag
                     </button>
                 </div>
                 <h3>${product.title}</h3>
@@ -66,14 +66,13 @@ class UI {
                 button.innerText = "In Cart";
                 button.disabled = true;
             }
-            button.addEventListener('click', (event) => {
+            button.addEventListener('click', event => {
                 event.target.innerText = "In Cart";
                 event.target.disabled = true;
                 //get products from products
                 let cartItem = {...Storage.getProduct(id), amount:1};
                 // add product to cart
                 cart = [...cart, cartItem];
-                console.log(cart);
                 // save cart in local storage
                 Storage.saveCart(cart);
                 // set cart values
@@ -82,9 +81,7 @@ class UI {
                 this.addCartItem(cartItem);
                 // show the cart
                 this.showCart();
-            });
-                
-        
+            });    
         });
     }
 
@@ -112,12 +109,11 @@ class UI {
             </div>
             <div>
                 <i class="fas fa-chevron-up" data-id=${item.id}></i>
-                <p class="item-amount" data-id=${item.amount}>1</p>
+                <p class="item-amount">${item.amount}</p>
                 <i class="fas fa-chevron-down" data-id=${item.id}></i>
             </div>            
         `;
         cartContent.appendChild(div);
-        console.log(cartContent);
     }
 
     showCart() {
@@ -146,7 +142,7 @@ class UI {
         // clear cart button
         clearCartBtn.addEventListener('click', () => {
             this.clearCart();
-        })
+        });
 
         //cart functionality
         cartContent.addEventListener('click', event => {
@@ -155,8 +151,29 @@ class UI {
                 let id = removeItem.dataset.id;
                 cartContent.removeChild(removeItem.parentElement.parentElement);
                 this.removeItem(id);
-            } 
-        })
+            } else if (event.target.classList.contains('fa-chevron-up')) {
+                let addAmount = event.target;
+                let id = addAmount.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount + 1;
+                Storage.saveCart(cart);
+                this.setCartValues(cart);
+                addAmount.nextElementSibling.innerText = tempItem.amount;
+            } else if (event.target.classList.contains('fa-chevron-down')) {
+                let lowerAmount = event.target;
+                let id = lowerAmount.dataset.id;
+                let tempItem = cart.find(item => item.id === id);
+                tempItem.amount = tempItem.amount - 1;
+                if (tempItem.amount > 0) {
+                    Storage.saveCart(cart);
+                    this.setCartValues(cart);
+                    lowerAmount.previousElementSibling.innerText = tempItem.amount;
+                } else {
+                    cartContent.removeChild(lowerAmount.parentElement.parentElement);
+                    this.removeItem(id);
+                }
+            }
+        });
     }
 
     clearCart() {
@@ -196,7 +213,7 @@ class Storage {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
     static getCart() {
-        return localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[];
+        return localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[]
     }
 }
 
