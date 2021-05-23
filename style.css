@@ -190,7 +190,6 @@ body {
 }
 @media (max-width: 692px) {
   body {
-    background-color: red;
     display: block;
   }
   .navbar {
@@ -269,9 +268,6 @@ body {
 }
 
 @media (min-width: 854px) {
-  body {
-    background-color: blue;
-  }
   .hero-copy-container {
     margin-right: 2rem;
   }
@@ -291,9 +287,6 @@ body {
 }
 
 @media (min-width: 1024px) {
-  body {
-    background-color: green;
-  }
   .hero-copy-container {
     margin-right: 2rem;
   }
