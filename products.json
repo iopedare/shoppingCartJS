@@ -3,65 +3,49 @@
     {
       "sys": { "id": "1" },
       "fields": {
-        "title": "queen panel bed",
-        "price": 10.99,
-        "image": { "fields": { "file": { "url": "./images/product-1.jpeg" } } }
+        "title": "samsung TV",
+        "price": 500000,
+        "image": { "fields": { "file": { "url": "./image/product1.png" } } }
       }
     },
     {
       "sys": { "id": "2" },
       "fields": {
-        "title": "king panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-2.jpeg" } } }
+        "title": "PIXEL 4a",
+        "price": 250000,
+        "image": { "fields": { "file": { "url": "./image/product2.png" } } }
       }
     },
     {
       "sys": { "id": "3" },
       "fields": {
-        "title": "single panel bed",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-3.jpeg" } } }
+        "title": "PS5",
+        "price": 600000,
+        "image": { "fields": { "file": { "url": "./image/product3.png" } } }
       }
     },
     {
       "sys": { "id": "4" },
       "fields": {
-        "title": "twin panel bed",
-        "price": 22.99,
-        "image": { "fields": { "file": { "url": "./images/product-4.jpeg" } } }
+        "title": "Macbook Air",
+        "price": 800000,
+        "image": { "fields": { "file": { "url": "./image/product4.png" } } }
       }
     },
     {
       "sys": { "id": "5" },
       "fields": {
-        "title": "fridge",
-        "price": 88.99,
-        "image": { "fields": { "file": { "url": "./images/product-5.jpeg" } } }
+        "title": "Apple Watch",
+        "price": 95000,
+        "image": { "fields": { "file": { "url": "./image/product5.png" } } }
       }
     },
     {
       "sys": { "id": "6" },
       "fields": {
-        "title": "dresser",
-        "price": 32.99,
-        "image": { "fields": { "file": { "url": "./images/product-6.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "7" },
-      "fields": {
-        "title": "couch",
-        "price": 45.99,
-        "image": { "fields": { "file": { "url": "./images/product-7.jpeg" } } }
-      }
-    },
-    {
-      "sys": { "id": "8" },
-      "fields": {
-        "title": "table",
-        "price": 33.99,
-        "image": { "fields": { "file": { "url": "./images/product-8.jpeg" } } }
+        "title": "Airpods",
+        "price": 80000,
+        "image": { "fields": { "file": { "url": "./image/product6.png" } } }
       }
     }
   ]
