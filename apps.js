@@ -8,6 +8,14 @@ const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 
+// navbar mobile menu
+const toggleButton = document.getElementById('toggle-button');
+const navbarLinksUl = document.getElementById('navbar-links-ul');
+
+toggleButton.addEventListener('click', () => {
+    navbarLinksUl.classList.toggle('active');
+});
+
 // cart
 let cart = [];
 //buttons
