@@ -98,7 +98,6 @@ class UI {
 
     addCartItem(item) {
         const div = document.createElement('div');
-        // Here is the div class to change how the cart looks
         div.classList.add('cart-item');
         div.innerHTML = 
         `
@@ -112,7 +111,7 @@ class UI {
                 <i class="fas fa-chevron-up" data-id=${item.id}></i>
                 <p class="item-amount">${item.amount}</p>
                 <i class="fas fa-chevron-down" data-id=${item.id}></i>
-            </div>            
+            </div>         
         `;
         cartContent.appendChild(div);
     }
@@ -291,5 +290,6 @@ function phoneValidation() {
     } else {
         phoneInput.style.borderColor = "red";
         phoneError.innerHTML = "Please enter a valid phone number";
+        phoneError.style.color = "red";
     }
 }
