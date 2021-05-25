@@ -464,6 +464,48 @@ body {
   color: var(--primaryColor);
   cursor: pointer;
 }
+/* ----------- Cart Item Form ----------  */
+.formInput {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid green; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.formInput p {
+  font-size: 0.7rem;
+  margin-top: -5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+input {
+  margin-top: 5px;
+  margin-bottom: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border-color: grey;
+}
+.input-list {
+  height: 30px;
+  background: var(--headerBcgColor);
+  padding: 3px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* ----------- End of Cart Item Form ----------  */
+
 /* ----------- End of Cart Item ----------  */
 .cart-footer {
   margin-top: 2rem;

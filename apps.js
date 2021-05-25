@@ -8,14 +8,6 @@ const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDOM = document.querySelector('.products-center');
 
-// navbar mobile menu
-const toggleButton = document.getElementById('toggle-button');
-const navbarLinksUl = document.getElementById('navbar-links-ul');
-
-toggleButton.addEventListener('click', () => {
-    navbarLinksUl.classList.toggle('active');
-});
-
 // cart
 let cart = [];
 //buttons
@@ -57,7 +49,7 @@ class UI {
                     </button>
                 </div>
                 <h3>${product.title}</h3>
-                <h4>$${product.price.toLocaleString()}</h4>
+                <h4>₦${product.price.toLocaleString()}</h4>
             </article>
             `
         });
@@ -113,7 +105,7 @@ class UI {
             <img src=${item.image} alt="product">
             <div>
                 <h4>${item.title}</h4>
-                <h5>$${item.price.toLocaleString()}</h5>
+                <h5>₦${item.price.toLocaleString()}</h5>
                 <span class="remove-item" data-id=${item.id}>remove</span>
             </div>
             <div>
@@ -241,3 +233,63 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.cartLogic();
     });
 });
+
+
+// navbar mobile menu
+const toggleButton = document.getElementById('toggle-button');
+const navbarLinksUl = document.getElementById('navbar-links-ul');
+
+toggleButton.addEventListener('click', () => {
+    navbarLinksUl.classList.toggle('active');
+});
+
+// form validation
+function nameValidation() {
+    var nameInput = document.getElementById('nameInput');
+    var nameError = document.getElementById('nameError');
+
+    if (nameInput.value == "") {
+        nameInput.style.borderColor = "red";
+        nameError.innerHTML = "Please enter your name";
+        nameError.style.color = "red";
+    } else {
+        nameInput.style.borderColor = "green";
+        nameError.innerHTML = "";
+    }
+}
+
+function emailValidation() {
+    var emailInput = document.getElementById('emailInput');
+    var emailError = document.getElementById('emailError');
+
+    if (emailInput.value == "") {
+        emailInput.style.borderColor = "red";
+        emailError.innerHTML = "Please enter your email address";
+        emailError.style.color = 'red';
+    } else if (!emailInput.value.includes("@")) {
+        emailInput.style.borderColor = "red";
+        emailError.innerHTML = "Please enter a valid email address";
+        emailError.style.color = 'red';
+    } else {
+        emailInput.style.borderColor = "green";
+        emailError.innerHTML = "";
+    }
+}
+
+function phoneValidation() {
+    var phoneInput = document.getElementById('phoneInput');
+    var phoneError = document.getElementById('phoneError');
+    var phoneNumber = /^\(?([0-9]{4})\)?[ ]?([0-9]{3})[ ]?([0-9]{4})$/;
+
+    if (phoneInput.value.match(phoneNumber)) {
+        phoneInput.style.borderColor = "green";
+        phoneError.innerHTML = "";
+    } else if (phoneInput.value == "") {
+        phoneInput.style.borderColor = "red";
+        phoneError.innerHTML = "Please enter your phone number";
+        phoneError.style.color = "red";
+    } else {
+        phoneInput.style.borderColor = "red";
+        phoneError.innerHTML = "Please enter a valid phone number";
+    }
+}

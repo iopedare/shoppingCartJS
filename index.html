@@ -104,12 +104,26 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div> -->
-                    <!-- End of cart item  -->
-        
+                    <!-- End of cart item  -->                    
                 </div>
+
+                <div class="formDiv">
+                    <form id="registrationForm" class="formInput">
+                        <input onblur="nameValidation()" class="input-list form-control" type="text" name="" id="nameInput"
+                            placeholder="Your Name">
+                        <p class="errors" id="nameError"></p>
+                        <input onblur="emailValidation()" class="input-list form-control" type="text" name="" id="emailInput"
+                            placeholder="Your Email">
+                        <p class="errors" id="emailError"></p>
+                        <input onblur="phoneValidation()" class="input-list form-control" type="number" name="" id="phoneInput"
+                            placeholder="Your Phone Number">
+                        <p class="errors" id="phoneError"></p>
+                    </form>
+                </div>
+                
         
                 <div class="cart-footer">
-                    <h3>your total: $<span class="cart-total">0</span></h3>
+                    <h3>your total: ₦<span class="cart-total">0</span></h3>
                     <button class="clear-cart banner-btn">clear cart</button>
                 </div>
         
