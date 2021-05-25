@@ -57,7 +57,7 @@ class UI {
                     </button>
                 </div>
                 <h3>${product.title}</h3>
-                <h4>$${product.price}</h4>
+                <h4>$${product.price.toLocaleString()}</h4>
             </article>
             `
         });
@@ -100,19 +100,20 @@ class UI {
             tempTotal += item.price * item.amount;
             itemsTotal += item.amount;
         });
-        cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+        cartTotal.innerText = parseFloat(tempTotal.toFixed(2)).toLocaleString();
         cartItems.innerText = itemsTotal;
     }
 
     addCartItem(item) {
         const div = document.createElement('div');
+        // Here is the div class to change how the cart looks
         div.classList.add('cart-item');
         div.innerHTML = 
         `
             <img src=${item.image} alt="product">
             <div>
                 <h4>${item.title}</h4>
-                <h5>$${item.price}</h5>
+                <h5>$${item.price.toLocaleString()}</h5>
                 <span class="remove-item" data-id=${item.id}>remove</span>
             </div>
             <div>

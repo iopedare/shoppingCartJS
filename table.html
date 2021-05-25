@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .content {
+        max-width: 72%;
+        width: 450px;
+        /* min-width: 35%; */
+        border: 1px solid red;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1rem;
+    }
+    @media (max-width: 640px){
+        .content {
+            width: 95%;
+        }
+    }
+    .table {
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+    }
+    .input {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid green;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    input {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    .input-list {
+        height: 30px;
+        background: lightblue;
+        border-radius: 10px;
+        padding: 3px;
+    }
+    .amount {
+        text-align: center;
+        border: 1px solid hotpink;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .amount h3 {
+        padding: 3px;
+    }
+    .amount h4 {
+        padding: 2px;
+    }
+    .checkout {
+        border: 1px solid cornflowerblue;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 3px;
+    }
+    .checkoutBtn {
+        padding: 5px 10px;
+    }
+    .checkoutBtn a {
+        text-decoration: none;
+        color: black;
+    }
+    .input p {
+        font-size: 0.7rem;
+        margin-top: -5px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+</style>
+<body>
+    <div class="content">
+        <header>
+            <table class="table">
+                <tr>
+                    <th>S/N</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Apple Watch</td>
+                    <td>N85,000</td>
+                    <td>
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </td>
+                    <td>remove</td>
+                </tr>
+            </table>
+        </header>
+
+        <form id="registrationForm" class="input">
+            <input onblur="nameValidation()" class="input-list form-control" type="text" name="" id="nameInput" placeholder="Your Name">
+            <p class="errors" id="nameError"></p>
+            <input onblur="emailValidation()" class="input-list form-control" type="text" name="" id="emailInput" placeholder="Your Email">
+            <p class="errors" id="emailError"></p>
+            <input onblur="phoneValidation()" class="input-list form-control" type="number" name="" id="phoneInput" placeholder="Your Phone Number">
+            <p class="errors" id="phoneError"></p>
+        </form>
+
+        <section class="amount">
+            <h3>Total Amount to be Paid</h3>
+            <h4>N95, 000</h4>
+        </section>
+
+        <footer class="checkout">
+            <button class="checkoutBtn"><a href="">Contine Shopping</a></button>
+            <button class="checkoutBtn"><a href="">Checkout</a></button>
+        </footer>
+    </div>
+
+    <script>
+        const inputValues = Array.from(document.querySelectorAll('#registrationForm input'))
+        .reduce((acc, input) => ({...acc, [input.id]: input.value }), {});
+        console.log(inputValues);
+
+        function nameValidation() {
+            var nameInput = document.getElementById('nameInput');
+            var nameError = document.getElementById('nameError');
+
+            if (nameInput.value == "") {
+                nameInput.style.borderColor = "red";
+                nameError.innerHTML = "Please enter your name";
+                nameError.style.color = "red";
+            } else {
+                nameInput.style.borderColor = "green";
+                nameError.innerHTML = "";
+            }
+        }
+
+        function emailValidation() {
+            var emailInput = document.getElementById('emailInput');
+            var emailError = document.getElementById('emailError');
+
+            if (emailInput.value == "") {
+                emailInput.style.borderColor = "red";
+                emailError.innerHTML = "Please enter your email address";
+                emailError.style.color = 'red';
+            } else if (!emailInput.value.includes("@")) {
+                emailInput.style.borderColor = "red";
+                emailError.innerHTML = "Please enter a valid email address";
+                emailError.style.color = 'red';
+            } else {
+                emailInput.style.borderColor = "green";
+                emailError.innerHTML = "";
+            }
+        }
+
+        function phoneValidation() {
+            var phoneInput = document.getElementById('phoneInput');
+            var phoneError = document.getElementById('phoneError');
+            var phoneNumber = /^\(?([0-9]{4})\)?[ ]?([0-9]{3})[ ]?([0-9]{4})$/;
+
+            if (phoneInput.value.match(phoneNumber)) {
+                phoneInput.style.borderColor = "green";
+                phoneError.innerHTML = "";
+            } else if (phoneInput.value == "") {
+                phoneInput.style.borderColor = "red";
+                phoneError.innerHTML = "Please enter your phone number";
+                phoneError.style.color = "red";
+            } else {
+                phoneInput.style.borderColor = "red";
+                phoneError.innerHTML = "Please enter a valid phone number";
+            }
+        }
+
+    </script>
+</body>
+</html>
